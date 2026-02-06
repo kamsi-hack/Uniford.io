@@ -1,0 +1,295 @@
+/* =========================
+   GLOBAL STYLES
+========================= */
+:root {
+    --primary-color: #9db3f2; /* Uniford Blue */
+    --secondary-color: #0bbcd6;
+    --accent-color: #f4b400;
+    --dark-color: #1f2933;
+    --light-color: #f5f7fb;
+    --text-color: #070000c5;
+    --success-color: #16a34a;
+    --danger-color: #dc2626;
+    --border-radius: 8px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Tahoma, sans-serif;
+}
+
+body {
+    background: rgb(20, 20, 207);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* =========================
+   HEADER & NAVBAR
+========================= */
+header {
+    background: var(--primary-color);
+    color: #fff;
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    font-size: 1.6rem;
+    letter-spacing: 1px;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: 500;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* =========================
+   AUTH PAGES (LOGIN / REGISTER)
+========================= */
+.auth-container {
+    max-width: 400px;
+    margin: 80px auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.auth-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+}
+
+.auth-container label {
+    display: block;
+    margin: 12px 0 6px;
+    font-weight: 500;
+}
+
+.auth-container input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    outline: none;
+}
+
+.auth-container input:focus {
+    border-color: var(--primary-color);
+}
+
+.auth-container button {
+    width: 100%;
+    margin-top: 20px;
+    padding: 12px;
+    background: var(--primary-color);
+    border: none;
+    color: #fff;
+    font-size: 1rem;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+}
+
+.auth-container button:hover {
+    background: #163bb0;
+}
+
+.auth-container p {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.auth-container a {
+    color: var(--secondary-color);
+    text-decoration: none;
+}
+
+/* =========================
+   DASHBOARD LAYOUT
+========================= */
+.dashboard {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 240px;
+    background: var(--dark-color);
+    color: #fff;
+    padding: 25px 20px;
+}
+
+.sidebar h3 {
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.sidebar a {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: var(--border-radius);
+    margin-bottom: 10px;
+}
+
+.sidebar a:hover,
+.sidebar a.active {
+    background: var(--primary-color);
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    padding: 30px;
+}
+
+/* =========================
+   CARDS (CLASSES, SUBJECTS, COURSES)
+========================= */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: #fff;
+    padding: 20px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+}
+
+.card h4 {
+    margin-bottom: 10px;
+    color: var(--primary-color);
+}
+
+.card p {
+    font-size: 0.95rem;
+}
+
+/* =========================
+   PROGRESS BAR
+========================= */
+.progress-container {
+    margin-top: 15px;
+}
+
+.progress-label {
+    font-size: 0.85rem;
+    margin-bottom: 5px;
+}
+
+.progress-bar {
+    background: #e5e7eb;
+    height: 8px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+    background: var(--success-color);
+    width: 0%;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+.btn {
+    display: inline-block;
+    padding: 10px 18px;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background: var(--primary-color);
+    color: #fff;
+}
+
+.btn-secondary {
+    background: var(--secondary-color);
+    color: #fff;
+}
+
+.btn-danger {
+    background: var(--danger-color);
+    color: #fff;
+}
+
+/* =========================
+   TABLES (COURSE LISTS)
+========================= */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    margin-top: 20px;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+}
+
+table th,
+table td {
+    padding: 14px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+table th {
+    background: var(--primary-color);
+    color: #fff;
+}
+
+table tr:hover {
+    background: #f1f5f9;
+}
+
+/* =========================
+   FOOTER
+========================= */
+footer {
+    text-align: center;
+    padding: 15px;
+    background: #fff;
+    margin-top: 40px;
+    font-size: 0.85rem;
+    color: #666;
+}
+
+/* =========================
+   RESPONSIVE DESIGN
+========================= */
+@media (max-width: 768px) {
+    .dashboard {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .sidebar a {
+        margin: 5px;
+    }
+}
