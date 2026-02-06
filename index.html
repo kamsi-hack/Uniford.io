@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+</html>
+    <head>
+<meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Uniford Secondary School</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #04376a;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #89a1e3;
+      color: #fff;
+      padding: 15px;
+      text-align: center;
+    }
+    .container {
+      max-width: 900px;
+      margin: 20px auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    h2 { color: #1e3a8a; }
+    input, select, button {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+    }
+    button {
+      background: #1e3a8a;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    button:hover { background: #e11b74; }
+    .hidden { display: none; }
+    ul { padding-left: 20px; }
+  </style>
+</head>
+<body><header>
+  <h1>Uniford Secondary School</h1>
+  <p>Learning Portal</p>
+</header><div class="container" id="authSection">
+  <h2>Login / Register</h2>
+  <input type="text" id="username" placeholder="Username" />
+  <input type="password" id="password" placeholder="Password" />
+  <button onclick="register()">Register</button>
+  <button onclick="login()">Login</button>
+  <p id="authMessage"></p>
+</div><div class="container hidden" id="dashboard">
+  <h2>Welcome, <span id="userDisplay"></span></h2> <h3>Your Class</h3>
+  <select id="classSelect">
+    <option>JSS 1</option>
+    <option>JSS 2</option>
+    <option>JSS 3</option>
+    <option>SS 1</option>
+    <option>SS 2</option>
+    <option>SS 3</option>
+  </select> <h3>Subjects</h3>
+  <input type="text" id="subjectInput" placeholder="Add subject" />
+  <button onclick="addSubject()">Add Subject</button>
+  <ul id="subjectList"></ul> <h3>Courses / Progress</h3>
+  <input type="text" id="courseInput" placeholder="Add course" />
+  <button onclick="addCourse()">Add Course</button>
+  <ul id="courseList"></ul><button onclick="logout()">Logout</button>
+
+</div><script>
+  let currentUser = null;
+
+  function register() {
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+
+    if (!username || !password) {
+      authMessage.textContent = 'Please fill all fields';
+      return;
+    }
+
+    if (localStorage.getItem(username)) {
+      authMessage.textContent = 'User already exists';
+      return;
+    }
+
+    const userData = {
+      password,
+      class: 'JSS 1',
+      subjects: [],
+      courses: []
+    };
+
+    localStorage.setItem(username, JSON.stringify(userData));
+    authMessage.textContent = 'Registration successful. You can login.';
+  }
+
+  function login() {
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+    const data = localStorage.getItem(username);
+
+    if (!data) {
+      authMessage.textContent = 'User not found';
+      return;
+    }
+
+    const userData = JSON.parse(data);
+    if (userData.password !== password) {
+      authMessage.textContent = 'Incorrect password';
+      return;
+    }
+
+    currentUser = username;
+    loadDashboard();
+  }
+
+  function loadDashboard() {
+    authSection.classList.add('hidden');
+    dashboard.classList.remove('hidden');
+    userDisplay.textContent = currentUser;
+
+    const userData = JSON.parse(localStorage.getItem(currentUser));
+    classSelect.value = userData.class;
+    renderList(subjectList, userData.subjects);
+    renderList
+  }
